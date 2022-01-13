@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import BookMainPage from "./components/pages/BookMainPage.vue";
 </script>
 
 <template>
-  <BookMainPage />
+  <router-view />
 </template>
 
 <style>
