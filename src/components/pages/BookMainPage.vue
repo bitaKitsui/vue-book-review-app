@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import BookMainTemplate from "../templates/BookMainTemplate.vue";
+import {searchBook} from "../../api";
 
-const onSubmit = (query: string) => {
-  console.log('page', query)
+const onSubmit = async (query: string) => {
+  const data = await searchBook(query)
+  console.log('data', data)
 }
 </script>
 
