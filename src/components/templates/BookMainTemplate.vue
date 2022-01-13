@@ -4,16 +4,18 @@ import BookForm from "../organisms/BookForm.vue";
 import BookInput from "../atoms/BookInput.vue";
 import BookSearchButton from "../atoms/BookSearchButton.vue";
 import BookCardList from "../organisms/BookCardList.vue";
+
+const search = false
 </script>
 
 <template>
   <BookHeader />
   <div class="wrapper">
-    <BookForm class="form">
+    <BookForm :search="true">
       <BookInput :width="'100%'" />
       <BookSearchButton />
     </BookForm>
-    <BookCardList />
+    <BookCardList v-if="search" />
   </div>
 </template>
 
@@ -21,11 +23,5 @@ import BookCardList from "../organisms/BookCardList.vue";
 .wrapper {
   padding: 20px 60px;
   min-height: calc(100vh - 60px);
-}
-
-.form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 </style>
