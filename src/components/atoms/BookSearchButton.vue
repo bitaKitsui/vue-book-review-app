@@ -1,13 +1,9 @@
 <script setup lang="ts">
-interface Props {
-  type: 'button' | 'submit' | 'reset'
-}
 
-const { type } = defineProps<Props>()
 </script>
 
 <template>
-  <button :type="type" class="button--search">
+  <button type="submit" class="button--search">
     <span class="material-icons">
       search
     </span>
@@ -16,9 +12,9 @@ const { type } = defineProps<Props>()
 
 <style scoped>
 .button--search {
-  display: flex;
   border: none;
   background-color: white;
+  display: flex;
   cursor: pointer;
 }
 </style>

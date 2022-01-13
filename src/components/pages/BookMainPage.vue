@@ -1,9 +1,7 @@
-<script setup lang="ts">
-import BookMainView from "../templates/BookMainView.vue";
-import BookRootView from "../templates/BookRootView.vue";
-</script>
+      <script setup lang="ts">
+      import BookMainTemplate from "../templates/BookMainTemplate.vue";
+      </script>
 
-<template>
-  <BookMainView />
-  <BookRootView />
-</template>
+      <template>
+        <BookMainTemplate />
+      </template>

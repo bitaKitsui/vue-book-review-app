@@ -4,7 +4,7 @@ import BookTitle from "../atoms/BookTitle.vue";
 
 <template>
   <div>
-    <BookTitle class="header" :text="'ブックレビューApp'" :header="true" />
+    <BookTitle class="header" :text="'App'" :header="true" />
   </div>
 </template>
 
