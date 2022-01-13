@@ -9,7 +9,9 @@ import BookText from "../atoms/BookText.vue";
   <div>
     <BookImage />
     <BookCardTitle>
-      Book Title
+      <router-link to="/detail">
+        Book Title
+      </router-link>
     </BookCardTitle>
     <BookText>
       Book description...
