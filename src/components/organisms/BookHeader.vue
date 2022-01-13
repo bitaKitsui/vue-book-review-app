@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import BookTitle from "../atoms/BookTitle.vue";
+import BookSpan from "../atoms/BookSpan.vue";
 </script>
 
 <template>
-  <div>
-    <BookTitle class="header" :text="'App'" :header="true" />
+  <div class="header">
+    <BookSpan :isHeader="true">
+      App
+    </BookSpan>
   </div>
 </template>
 
