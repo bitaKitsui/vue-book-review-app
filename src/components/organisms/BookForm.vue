@@ -17,7 +17,7 @@ const classObject = computed(() => {
 </script>
 
 <template>
-  <form :class="[classObject]">
+  <form :class="[classObject]" @submit.prevent>
     <slot />
   </form>
 </template>

@@ -2,12 +2,25 @@
 import { computed } from "vue";
 
 interface Props {
+  value: string
   width?: string
 }
 
-const { width } = withDefaults(defineProps<Props>(), {
+interface Emits {
+  (event: 'input', value: string): void
+}
+
+const { value, width } = withDefaults(defineProps<Props>(), {
+  value: '',
   width: ''
 })
+
+const emit = defineEmits<Emits>()
+
+const handleInput = (event: { target: HTMLInputElement }) => {
+  const { target } = event
+  emit('input', target.value)
+}
 
 const classObject = computed(() => {
   return {
@@ -18,7 +31,12 @@ const classObject = computed(() => {
 </script>
 
 <template>
-  <input type="text" :class="[classObject]">
+  <input
+    type="text"
+    :value="value"
+    @input="handleInput"
+    :class="[classObject]"
+  >
 </template>
 
 <style>

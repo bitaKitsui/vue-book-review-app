@@ -1,9 +1,17 @@
 <script setup lang="ts">
+interface Emits {
+  (event: 'submit'): void
+}
 
+const emit = defineEmits<Emits>()
+
+const handleClick = () => {
+  emit('submit')
+}
 </script>
 
 <template>
-  <button type="submit" class="button--search">
+  <button type="submit" class="button--search" @click="handleClick">
     <span class="material-icons">
       search
     </span>
