@@ -3,6 +3,7 @@ import BookHeader from "../organisms/BookHeader.vue";
 import BookForm from "../organisms/BookForm.vue";
 import BookInput from "../atoms/BookInput.vue";
 import BookSearchButton from "../atoms/BookSearchButton.vue";
+import BookCard from "../molecules/BookCard.vue";
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import BookSearchButton from "../atoms/BookSearchButton.vue";
       <BookInput :width="'100%'" />
       <BookSearchButton />
     </BookForm>
+    <BookCard />
   </div>
 </template>
 
