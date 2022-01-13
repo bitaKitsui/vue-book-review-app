@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
         component: BookMainPage,
     },
     {
-        path: '/detail',
+        path: '/detail/:id',
         component: BookDetailPage
     }
 ]

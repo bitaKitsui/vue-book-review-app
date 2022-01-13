@@ -30,7 +30,7 @@ const classObject = computed(() => {
     </div>
     <div>
       <BookCardTitle>
-        <router-link to='/detail'>
+        <router-link :to="`/detail/${card.id}`">
           {{ card.title }}
         </router-link>
       </BookCardTitle>
