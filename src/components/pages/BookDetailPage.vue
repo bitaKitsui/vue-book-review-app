@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import {onMounted, reactive} from "vue";
 import { useRoute } from "vue-router";
 import BookDetailTemplate from "../templates/BookDetailTemplate.vue";
 import { fetchBookById } from "../../api";
+import { defaultBookItem } from "../../api/default";
+
+const state = reactive({ book: defaultBookItem })
 
 const router = useRoute()
 const { id } = router.params
 
 onMounted(async () => {
-  await fetchBookById(String(id))
+  state.book = await fetchBookById(String(id))
 })
 </script>
 
 <template>
-  <BookDetailTemplate />
+  <BookDetailTemplate :book="state.book" />
 </template>
