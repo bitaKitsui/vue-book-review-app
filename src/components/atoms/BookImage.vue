@@ -3,10 +3,12 @@ interface Props {
   imageLinks?: {
     smallThumbnail: string
     thumbnail: string
-  }
+  },
+  detail?: boolean
 }
 
 const props = defineProps<Props>()
+
 const src = props.imageLinks ? props.imageLinks.smallThumbnail : ''
 </script>
 
