@@ -1,16 +1,14 @@
 <script setup lang="ts">
-
+import { computed } from "vue";
 import BookImage from "../atoms/BookImage.vue";
 import BookCardTitle from "../atoms/BookCardTitle.vue";
 import BookText from "../atoms/BookText.vue";
-import {computed} from "vue";
+import {Card} from "../../types/types";
+
+
 
 interface Props {
-  card: {
-    id: number
-    title: string
-    description: string
-  },
+  card: Card,
   results?: boolean
 }
 
@@ -30,7 +28,7 @@ const classObject = computed(() => {
 <template>
   <li class="card" :class="[classObject]">
     <div>
-      <BookImage />
+      <BookImage :imageLinks="card.imageLinks" />
     </div>
     <div>
       <BookCardTitle>

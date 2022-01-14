@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, toRefs, watch } from "vue";
 import BookCard from "../molecules/BookCard.vue";
-import { BookItem, Result } from "../../types/types";
+import { BookItem, Card, Result } from "../../types/types";
 
 interface Props {
   result: Result
@@ -16,12 +16,21 @@ watch(() => result.value, (newResult) => {
   state.result = newResult
 })
 
-const card = (item: BookItem) => {
+const card = (item: BookItem): Card => {
   const { volumeInfo } = item
   return {
-    id: Number(item.id),
+    id: item.id,
     title: volumeInfo.title,
-    description: volumeInfo.description
+    description: volumeInfo.description,
+    imageLinks: volumeInfo.imageLinks
+        ? {
+            smallThumbnail: volumeInfo.imageLinks.smallThumbnail,
+            thumbnail: volumeInfo.imageLinks.thumbnail
+          }
+        : {
+            smallThumbnail: '',
+            thumbnail: ''
+          }
   }
 }
 

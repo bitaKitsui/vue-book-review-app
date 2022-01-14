@@ -30,3 +30,13 @@ export interface Params {
     query: string
     startIndex?: number
 }
+
+export interface Card {
+    id: string
+    title: string
+    description?: string
+    imageLinks?: {
+        smallThumbnail: string
+        thumbnail: string
+    }
+}

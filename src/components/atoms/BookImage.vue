@@ -1,7 +1,15 @@
 <script setup lang="ts">
+interface Props {
+  imageLinks?: {
+    smallThumbnail: string
+    thumbnail: string
+  }
+}
 
+const props = defineProps<Props>()
+const src = props.imageLinks ? props.imageLinks.smallThumbnail : ''
 </script>
 
 <template>
-  <img src="/" alt="#" />
+  <img :src="src" alt="#" />
 </template>
