@@ -49,13 +49,13 @@ const classObject = computed(() => {
 .card {
   list-style: none;
   border: 1px solid;
-  width: 200px;
+  width: 48%;
   height: 200px;
   display: flex;
   justify-content: space-around;
 }
 
 .card--list {
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 </style>
