@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 interface Props {
   imageLinks?: {
     smallThumbnail: string
@@ -9,7 +11,9 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const src = props.imageLinks ? props.imageLinks.smallThumbnail : ''
+const src = computed(() => {
+  return props.imageLinks ? props.imageLinks.smallThumbnail : ''
+})
 </script>
 
 <template>

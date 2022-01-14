@@ -3,7 +3,7 @@ import { computed } from "vue";
 import BookImage from "../atoms/BookImage.vue";
 import BookCardTitle from "../atoms/BookCardTitle.vue";
 import BookText from "../atoms/BookText.vue";
-import {Card} from "../../types/types";
+import { Card } from "../../types/types";
 
 
 
@@ -14,9 +14,11 @@ interface Props {
 
 const { card, results } = defineProps<Props>()
 
-const orderedText = (value: string | undefined): string => {
-  return value ? `${value.substring(0, 15)}...` : ''
-}
+const orderedText = computed(() => {
+  return (value: string | undefined): string => {
+    return value ? `${value.substring(0, 15)}...` : ''
+  }
+})
 
 const classObject = computed(() => {
   return {

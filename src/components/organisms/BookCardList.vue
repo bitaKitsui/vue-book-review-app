@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRefs, watch } from "vue";
+import {computed, reactive, toRefs, watch} from "vue";
 import BookCard from "../molecules/BookCard.vue";
 import { BookItem, Card, Result } from "../../types/types";
 
@@ -16,13 +16,14 @@ watch(() => result.value, (newResult) => {
   state.result = newResult
 })
 
-const card = (item: BookItem): Card => {
-  const { volumeInfo } = item
-  return {
-    id: item.id,
-    title: volumeInfo.title,
-    description: volumeInfo.description,
-    imageLinks: volumeInfo.imageLinks
+const card = computed(() => {
+  return (item: BookItem): Card => {
+    const { volumeInfo } = item
+    return {
+      id: item.id,
+      title: volumeInfo.title,
+      description: volumeInfo.description,
+      imageLinks: volumeInfo.imageLinks
         ? {
             smallThumbnail: volumeInfo.imageLinks.smallThumbnail,
             thumbnail: volumeInfo.imageLinks.thumbnail
@@ -31,9 +32,9 @@ const card = (item: BookItem): Card => {
             smallThumbnail: '',
             thumbnail: ''
           }
+    }
   }
-}
-
+})
 </script>
 
 <template>
