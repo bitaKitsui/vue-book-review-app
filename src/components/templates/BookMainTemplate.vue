@@ -19,9 +19,14 @@ const handleInput = (newValue: string) => {
   value.value = newValue
 }
 
+const validateInput = (query: string) => {
+  if (!query) return console.error('文字を入力してください')
+  return query
+}
+
 const handleSubmit = () => {
-  const query = value.value
-  emit('submit', query)
+  const query = validateInput(value.value)
+  emit('submit', String(query))
 }
 </script>
 
