@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {reactive, ref, toRefs, watch} from "vue";
+import { ref, toRefs } from "vue";
 import BookHeader from "../organisms/BookHeader.vue";
 import BookForm from "../organisms/BookForm.vue";
 import BookInput from "../atoms/BookInput.vue";
@@ -23,10 +23,6 @@ const emit = defineEmits<Emits>()
 const { result } = toRefs(props)
 
 console.log('result', result.value)
-
-// watch(() => result.value, () => {
-//   console.log('change', result.value)
-// })
 
 const handleInput = (newValue: string) => {
   value.value = newValue
