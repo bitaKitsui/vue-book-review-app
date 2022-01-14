@@ -1,20 +1,29 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { toRefs } from "vue";
 import BookCard from "../molecules/BookCard.vue";
+import { BookItem, Result } from "../../types/types";
 
-const cards = reactive([
-  { id: 1, title: 'Book1', description: 'description1' },
-  { id: 2, title: 'Book2', description: 'description2' },
-  { id: 3, title: 'Book3', description: 'description3' },
-  { id: 4, title: 'Book4', description: 'description4' },
-  { id: 5, title: 'Book5', description: 'description5' },
-  { id: 6, title: 'Book6', description: 'description6' },
-])
+interface Props {
+  result: Result
+}
+
+const { result } = defineProps<Props>()
+const { items } = toRefs(result)
+
+const card = (item: BookItem) => {
+  const { volumeInfo } = item
+  return {
+    id: Number(item.id),
+    title: volumeInfo.title,
+    description: volumeInfo.description
+  }
+}
+
 </script>
 
 <template>
   <ul class="card-list">
-    <BookCard v-for="card in cards" :key="card.id" :card="card" :results="true" />
+    <BookCard v-for="item in items" :key="item.id" :card="card(item)" :results="true" />
   </ul>
 </template>
 

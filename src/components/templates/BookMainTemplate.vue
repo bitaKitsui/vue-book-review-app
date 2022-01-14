@@ -1,19 +1,32 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import {reactive, ref, toRefs, watch} from "vue";
 import BookHeader from "../organisms/BookHeader.vue";
 import BookForm from "../organisms/BookForm.vue";
 import BookInput from "../atoms/BookInput.vue";
 import BookSearchButton from "../atoms/BookSearchButton.vue";
 import BookCardList from "../organisms/BookCardList.vue";
+import { Result } from "../../types/types";
+
+interface Props {
+  result: Result | null
+}
 
 interface Emits {
   (event: 'submit', query: string): void
 }
 
-const search = false
-
 const value = ref('')
+
+const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
+
+const { result } = toRefs(props)
+
+console.log('result', result.value)
+
+// watch(() => result.value, () => {
+//   console.log('change', result.value)
+// })
 
 const handleInput = (newValue: string) => {
   value.value = newValue
@@ -37,7 +50,7 @@ const handleSubmit = () => {
       <BookInput :width="'100%'" :value="value" @input="handleInput" />
       <BookSearchButton @submit="handleSubmit" />
     </BookForm>
-    <BookCardList v-if="search" />
+    <BookCardList v-if="result" :result="result" />
   </div>
 </template>
 

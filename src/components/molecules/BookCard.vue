@@ -16,6 +16,10 @@ interface Props {
 
 const { card, results } = defineProps<Props>()
 
+const orderedText = (value: string | undefined): string => {
+  return value ? `${value.substring(0, 15)}...` : ''
+}
+
 const classObject = computed(() => {
   return {
     'card--list': results
@@ -31,11 +35,11 @@ const classObject = computed(() => {
     <div>
       <BookCardTitle>
         <router-link :to="`/detail/${card.id}`">
-          {{ card.title }}
+          {{ orderedText(card.title) }}
         </router-link>
       </BookCardTitle>
       <BookText>
-        {{ card.description }}
+        {{ orderedText(card.description) }}
       </BookText>
     </div>
   </li>

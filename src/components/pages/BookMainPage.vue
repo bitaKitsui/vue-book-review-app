@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import {reactive} from "vue";
+import {reactive, toRefs} from "vue";
 import BookMainTemplate from "../templates/BookMainTemplate.vue";
 import {searchBook} from "../../api";
-import {defaultResult} from "../../api/default";
+import {Result} from "../../types/types";
 
-const state = reactive({ result: defaultResult })
+const state = reactive<{ result: Result | null }>({ result: null })
+const { result } = toRefs(state)
 
 const onSubmit = async (query: string) => {
   state.result = await searchBook(query)
@@ -13,5 +14,5 @@ const onSubmit = async (query: string) => {
 </script>
 
 <template>
-  <BookMainTemplate @submit="onSubmit" />
+  <BookMainTemplate @submit="onSubmit" :result="result" />
 </template>
