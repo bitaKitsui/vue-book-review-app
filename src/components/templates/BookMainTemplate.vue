@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, toRefs } from "vue";
+import {reactive, ref, toRefs, watch} from "vue";
 import BookHeader from "../organisms/BookHeader.vue";
 import BookForm from "../organisms/BookForm.vue";
 import BookInput from "../atoms/BookInput.vue";
@@ -16,13 +16,16 @@ interface Emits {
 }
 
 const value = ref('')
+const state = reactive<{ result: Result | null }>({ result: null })
 
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
 const { result } = toRefs(props)
 
-console.log('result', result.value)
+watch(() => result.value, () => {
+  state.result = result.value
+})
 
 const handleInput = (newValue: string) => {
   value.value = newValue
@@ -46,7 +49,7 @@ const handleSubmit = () => {
       <BookInput :width="'100%'" :value="value" @input="handleInput" />
       <BookSearchButton @submit="handleSubmit" />
     </BookForm>
-    <BookCardList v-if="result" :result="result" />
+    <BookCardList v-if="result" :result="state.result" />
   </div>
 </template>
 
